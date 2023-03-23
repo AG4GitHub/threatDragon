@@ -1,0 +1,46 @@
+{
+  "dfdElements": [
+    {
+      "id": "1",
+      "type": "process",
+      "name": "Web Server",
+      "description": "Receives and responds to HTTP requests from clients",
+      "dataFlowSources": [],
+      "dataFlowTargets": ["2", "3"]
+    },
+    {
+      "id": "2",
+      "type": "dataStore",
+      "name": "User Database",
+      "description": "Stores user account information",
+      "dataFlowSources": ["1"],
+      "dataFlowTargets": []
+    },
+    {
+      "id": "3",
+      "type": "dataStore",
+      "name": "Session Database",
+      "description": "Stores user session information",
+      "dataFlowSources": ["1"],
+      "dataFlowTargets": []
+    }
+  ],
+  "threats": [
+    {
+      "id": "1",
+      "title": "SQL Injection",
+      "description": "An attacker injects SQL code into a web form to gain unauthorized access to the user database",
+      "severity": "High",
+      "likelihood": "High",
+      "mitigations": [
+        {
+          "id": "1",
+          "title": "Input validation",
+          "description": "Validate user input to ensure that it does not contain SQL code",
+          "type": "Preventive"
+        }
+      ],
+      "dfds": ["1"]
+    }
+  ]
+}
